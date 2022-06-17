@@ -1,0 +1,11 @@
+# Mac Specific
+.DS_Store
+
+# JavaScript Specific
+node_modules
+
+# Java Specific
+*.class
+
+# Secret
+.env
