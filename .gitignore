@@ -1,6 +1,9 @@
 # Mac Specific
 .DS_Store
 
+# VSCode
+.vscode
+
 # JavaScript Specific
 node_modules
 
@@ -9,3 +12,4 @@ node_modules
 
 # Secret
 .env
+
