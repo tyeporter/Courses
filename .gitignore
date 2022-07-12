@@ -3,6 +3,7 @@
 
 # VSCode
 .vscode
+lib
 
 # JavaScript Specific
 node_modules
