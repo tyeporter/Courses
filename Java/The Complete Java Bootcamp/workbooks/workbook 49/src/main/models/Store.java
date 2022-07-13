@@ -21,10 +21,26 @@ public class Store {
         this.movies.add(new Movie(movie));
     }
 
-    public void sellMovie(Movie movie) {
-        if (this.contains(movie)) {
-            this.movies.remove(movie);
+    public void sellMovie(String name) {
+        if (!(this.movies.get(this.getMovieIndex(name)).isAvailable())) {
+            throw new IllegalStateException();
         }
+
+        this.movies.removeIf((movie) -> movie.getName().equals(name));
+    }
+
+    public void rentMovie(String name) {
+        this.movies.get(this.getMovieIndex(name)).setAvailable(false);
+    }
+
+    private int getMovieIndex(String name) {
+        for (int i = 0; i < this.movies.size(); i++) {
+            if (this.movies.get(i).getName().equals(name)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public boolean contains(Movie movie) {
