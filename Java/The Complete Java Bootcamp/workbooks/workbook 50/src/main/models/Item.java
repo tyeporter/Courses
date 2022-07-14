@@ -47,4 +47,15 @@ public class Item {
     public String toString() {
         return name + ": $" + price + "   ";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Item)) {
+            return false;
+        }
+
+        Item item = (Item)obj;
+
+        return this.name.equals(item.getName()) && this.price == item.getPrice();
+    }
 }
