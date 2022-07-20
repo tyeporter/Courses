@@ -1,6 +1,7 @@
 package src.main.models;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Team {
     private static final String POSITION_CHASER = "chaser";
@@ -106,9 +107,28 @@ public class Team {
     }
 
     private void checkParam(String value, String param) {
-        if (param == null || param.isEmpty()) {
-            throw new IllegalArgumentException(param + "");
+        if (value == null || value.isEmpty()) {
+            throw new IllegalArgumentException(param + " cannot be null/blank.");
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Team)) {
+            return false;
+        }
+
+        Team team = (Team)obj;
+
+        return this.house.equals(team.getHouse()) &&
+            this.keeper.equals(team.getKeeper()) &&
+            this.seeker.equals(team.getSeeker()) &&
+            Arrays.toString(this.chasers).equals(Arrays.toString(team.getChasers()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.house, this.keeper, this.seeker, Arrays.toString(this.chasers));
     }
 
     @Override
